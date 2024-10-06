@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisez Votre Force de Vente" - FAQ | Elsaïdaliya</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles specific to this page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b7eae5;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 7%;
+            padding: 10px 20px;
+            z-index: 10;
+            position: sticky;
+            background-color: #00796b;
+        }
+
+        .brand {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin-right: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            /* Aligns*/
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: #fff;
+            /* Couleur blanche pour contraster avec l'image de fond */
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            /* Ombre portée pour une meilleure lisibilité */
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00796B;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta a:hover {
+            background-color: #00695C;
+        }
+
+        .advantages-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .advantages {
+            display: flex;
+            flex-direction: column;
+            width: 65%;
+        }
+
+        .advantage {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f1f1f1;
+            border-left: 5px solid #00796B;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            counter-increment: advantage-counter;
+            display: flex;
+            align-items: center;
+        }
+
+        .advantage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .advantage::before {
+            content: "\21AA";
+            /* Unicode for curved right arrow */
+            display: inline-block;
+            margin-right: 10px;
+            background-color: #00796B;
+            color: #fff;
+            border-radius: 3px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            position: absolute;
+            left: -35px;
+            top: 15px;
+        }
+
+        .image-container {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: 70%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion {
+            background-color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            font-size: 1.5em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion:hover {
+            background-color: #f1f1f1;
+        }
+
+        .accordion.active,
+        .accordion:hover {
+            background-color: #00796B;
+            color: white;
+        }
+
+        .panel {
+            padding: 0 15px;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            background-color: #e0f2f1;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .faq-column {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="brand">ELSAIDALIYA</div>
+        <div class="navbar">
+            <a href="ACCEUIL.html">Accueil</a>
+            <a href="A propos.html">À propos</a>
+            <a href="liste de magasins.html">Fournisseurs</a>
+            <a href="contact.html">Contact</a>
+            <a href="s'enregistrer et connecter.html">Se connecter</a>
+        </div>
+    </div>
+
+    <section id="avantages" class="container">
+        <h2>Optimisez Votre Force de Vente</h2>
+        <div class="advantages-container">
+            <ul class="advantages">
+                <li class="advantage"><strong>Expansion de la clientèle:</strong> Une plateforme en ligne permet aux
+                    grossistes d’atteindre un plus grand nombre de pharmacies, augmentant ainsi leur clientèle
+                    potentielle.</li>
+                <li class="advantage"><strong>Efficacité opérationnelle:</strong> La gestion des commandes en ligne peut
+                    automatiser de nombreuses tâches administratives, réduisant les erreurs et améliorant l’efficacité.
+                </li>
+                <li class="advantage"><strong>Visibilité et marketing:</strong> Une présence sur une plateforme
+                    numérique offre une vitrine supplémentaire pour les produits, permettant des promotions ciblées et
+                    une meilleure visibilité des nouveaux produits.</li>
+                <li class="advantage"><strong>Analyse des données:</strong> Les plateformes permettent de collecter des
+                    données précieuses sur les tendances de commande, aidant les grossistes à mieux comprendre les
+                    besoins du marché et à ajuster leur stock en conséquence.</li>
+                <li class="advantage"><strong>Réduction des coûts:</strong> En centralisant les transactions en ligne,
+                    les coûts liés à la gestion des commandes par téléphone ou par fax peuvent être réduits.</li>
+            </ul>
+            <div class="image-container">
+                <img src="f1.jpg" alt="Avantages de notre plateforme">
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container">
+        <h2>FAQ - Foire Aux Questions</h2>
+        <div class="faq-container">
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je contacter le support client ?</button>
+                <div class="panel show">
+                    <p>Vous pouvez contacter notre support client via notre formulaire de contact sur le site ou en
+                        envoyant un e-mail à <a href="mailto:contact@elsaidaliya.com">contact@elsaidaliya.com</a>. Notre
+                        équipe est disponible du dimanche au jeudi, de 9h à 17h.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je devenir fournisseur sur Elsaïdaliya ?</button>
+                <div class="panel show">
+                    <p>Pour devenir fournisseur, cliquez sur “Inscription” et sélectionnez devenir vendor. Remplissez le
+                        formulaire avec les informations de votre entreprise. Une fois votre compte approuvé, vous
+                        pourrez commencer à lister vos produits sur notre plateforme.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Quels sont les frais pour vendre sur la plateforme ?</button>
+                <div class="panel show">
+                    <p>"Nous proposons un abonnement annuel sur Elsaïdaliya, offrant aux fournisseurs un accès
+                        privilégié à une gamme complète de fonctionnalités optimisées pour simplifier la gestion des
+                        produits, accroître la visibilité et maximiser les opportunités de vente.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je gérer mes produits et mes commandes ?</button>
+                <div class="panel show">
+                    <p>Connectez-vous à votre compte fournisseur et accédez à votre tableau de bord. Vous pourrez y
+                        ajouter, modifier ou supprimer des produits, et gérer vos commandes.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Que faire en cas de problème avec une commande ?</button>
+                <div class="Panel show">
+                    <p> Si vous rencontrez un problème avec une commande, contactez immédiatement notre support vendeur
+                        via votre tableau de bord. Nous vous assisterons pour résoudre le problème rapidement.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Mes informations personnelles sont-elles sécurisées ?</button>
+                <div class="Panel show">
+                    <p> Oui, nous prenons la sécurité de vos informations personnelles très au sérieux. Nous utilisons
+                        des protocoles de sécurité avancés pour protéger vos données.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Partagez-vous mes informations avec des tiers ?</button>
+                <div class="Panel show">
+                    <p> Nous ne partageons vos informations avec des tiers que lorsque cela est nécessaire pour traiter
+                        votre commande (par exemple, avec les services de livraison) ou lorsque la loi l’exige. Pour
+                        plus de détails, consultez notre politique de confidentialité.</p>
+                </div>
+            </div>

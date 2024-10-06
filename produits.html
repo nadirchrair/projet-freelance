@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Ajout de Produit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #b2ebf2;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #00796b;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #004d40;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #b2ebf2;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulaire d'Ajout de Produit</h2>
+    <form id="productForm" action="/submit" method="post">
+        <div class="form-group">
+            <label for="nom_commercial">Nom Commercial :</label>
+            <input type="text" id="nom_commercial" name="nom_commercial" required>
+            <div class="error" id="nom_commercial_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="dci">DCI :</label>
+            <input type="text" id="dci" name="dci" required>
+            <div class="error" id="dci_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="forme">Forme :</label>
+            <select id="forme" name="forme" required>
+                <option value="">Sélectionnez une forme</option>
+                <option value="Comprimé">Comprimé</option>
+                <option value="Capsule">Capsule</option>
+                <option value="Sirop">Sirop</option>
+                <option value="Gélule">Gélule</option>
+                <option value="Crème">Crème</option>
+                <option value="Pommade">Pommade</option>
+                <option value="Gel">Gel</option>
+                <option value="Gouttes auriculaires">Gouttes auriculaires</option>
+                <option value="Gouttes">Gouttes</option>
+                <option value="Solution buvable">Solution buvable</option>
+                <option value="Solution injectable">Solution injectable</option>
+                <option value="Solution buvable/injectable">Solution buvable/injectable</option>
+                <option value="Spray">Spray</option>
+                <option value="Injection">Injection</option>
+                <option value="Suppositoire">Suppositoire</option>
+                <option value="Collyre">Collyre</option>
+                <option value="Patch">Patch</option>
+                <option value="Granulés">Granulés</option>
+                <option value="Ovule">Ovule</option>
+                <option value="Pâte">Pâte</option>
+                <option value="Poudre">Poudre</option>
+                <option value="Pastille">Pastille</option>
+                <option value="Solution pour inhalation">Solution pour inhalation</option>
+                <option value="Suspension">Suspension</option>
+                <option value="Emplâtre">Emplâtre</option>
+                <option value="Aérosol">Aérosol</option>
+                <option value="Élixir">Élixir</option>
+                <option value="Lotion">Lotion</option>
+                <option value="Implant">Implant</option>
+                <option value="Dispositif intra-utérin">Dispositif intra-utérin</option>
+                <!-- Ajoutez d'autres options au besoin -->
+            </select>
+            <div class="error" id="forme_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="dosage">Dosage :</label>
+            <input type="text" id="dosage" name="dosage" required>
+            <div class="error" id="dosage_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="Ug">Ug :</label>
+            <input type="text" id="Ug" name="Ug" required>
+            <div class="error" id="Ug_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="conditionnement">Conditionnement :</label>
+            <select id="conditionnement" name="conditionnement" required>
+                <option value="">Sélectionnez un conditionnement</option>
+                <!-- Options de 1 à 100 -->
+                ${Array.from({ length: 100 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+            </select>
+            <div class="error" id="conditionnement_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="numero_lot">Numéro de Lot :</label>
+            <input type="text" id="numero_lot" name="numero_lot" required>
+            <div class="error" id="numero_lot_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="date_peremption">Date de Péremption :</label>
+            <input type="date" id="date_peremption" name="date_peremption" required>
+            <div class="error" id="date_peremption_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="prix_achat">Prix d'Achat :</label>
+            <input type="text" id="prix_achat" name="prix_achat" required>
+            <div class="error" id="prix_achat_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="prix_vente">Prix de Vente :</label>
+            <input type="text" id="prix_vente" name="prix_vente" required>
+            <div class="error" id="prix_vente_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="colisage">Colisage :</label>
+            <input type="text" id="colisage" name="colisage" required>
+            <div class="error" id="colisage_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="nom_laboratoire">Nom du Laboratoire :</label>
+            <input type="text" id="nom_laboratoire" name="nom_laboratoire" required>
+            <div class="error" id="nom_laboratoire_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="quantite_stock">Quantité en Stock :</label>
+            <input type="number" id="quantite_stock" name="quantite_stock" required>
+            <div class="error" id="quantite_stock_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="quantite_max_client">Quantité Maximum par Client :</label>
+            <input type="number" id="quantite_max_client" name="quantite_max_client" required>
+            <div class="error" id="quantite_max_client_error"></div>
+        </div>
+        <div class="form-group">
+            <label for="reservation">Réserver le produit :</label>
+            <select id="reservation" name="reservation" required>
+                <option value="">Sélectionnez une option</option>
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+            </select>
+            <div class="error" id="reservation_error"></div>
+        </div>
+        <button type="submit">Ajouter Produit</button>
+    </form>
+    <script>
+        document.getElementById('conditionnement').innerHTML = Array.from({ length: 100 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+    </script>
+</body>
+

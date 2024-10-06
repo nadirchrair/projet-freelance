@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<style>
+    /* Global Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .container-fluid {
+        margin-top: 10px;
+    }
+
+    .sidebar {
+        background-color: #f8f9fa;
+        /* Custom background color */
+        width: 250px;
+        /* Adjust the width as needed */
+        min-height: 100vh;
+        /* Full height */
+    }
+
+    .sidebar-header h3 {
+        font-size: 1.5rem;
+        /* Adjust the font size */
+        color: #007bff;
+        /* Custom text color */
+    }
+
+
+    .nav-link {
+        padding: 15px;
+        color: #333;
+        font-size: 1.1rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background-color: #34c3b9;
+        color: #fff;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 10px;
+        background-color: #f4f6f8;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: lefts;
+    }
+
+    .header {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .profile-container {
+        margin-left: auto;
+    }
+
+    .profile img {
+        border: 2px solid #34c3b9;
+    }
+
+    .content-section h2 {
+        color: #34c3b9;
+        margin-bottom: 20px;
+    }
+
+
+    .card {
+        border-radius: 8px;
+        border: none;
+        background-color: #e8f9f8;
+        margin-top: 20%;
+    }
+
+    .card .card-title {
+        color: #34c3b9;
+        margin-bottom: 10px;
+    }
+
+    .card .card-text {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table th,
+    .table td {
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #34c3b9;
+        color: #fff;
+    }
+
+    .btn {
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #34c3b9;
+        border-color: #34c3b9;
+    }
+
+    .btn-primary:hover {
+        background-color: #2ca3a0;
+        border-color: #2ca3a0;
+    }
+
+    .modal-content {
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #eee;
+    }
+
+    .modal-title {
+        color: #34c3b9;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar bg-light">
+            <div class="sidebar-header p-4 text-center">
+                <h3 class="text-primary">Tableau de bord</h3>
+            </div>
+            <ul class="nav flex-column">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#overview"><i
+                            class="fas fa-tachometer-alt"></i> Aperçu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#orders"><i class="fas fa-shopping-cart"></i> Commandes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Fournisseurs Suivi"><i class="fas fa-users"></i> Fournisseurs
+                        suivi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Messages"><i class="fas fa-users"></i> Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#settings"><i class="fas fa-cog"></i> Paramètres</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Container Principal -->
+        <header>
+            <div class="container mt-4">
+                <header class="d-flex justify-content-between align-items-center pb-3">
+                    <div class="profile-container d-flex align-items-center">
+                        <div class="profile d-flex align-items-center">
+                            <span class="me-2">Bienvenue, client </span>
+                            <img src="PH6.jpg" alt="Profile Image" class="rounded-circle" width="40" height="40">
+                        </div>
+                    </div>
+                </header>
+                <!-- Overview Section -->
+                <section id="overview" class="content-section">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Commandes Totales</h5>
+                                    <p class="card-text display-6">120</p>
+                                    <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mes Fournisseurs</h5>
+                                    <p class="card-text display-6">75</p>
+                                    <i class="fas fa-users fa-2x text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total achats</h5>
+                                    <p class="card-text display-6">200.000</p>
+                                    <i class="fas fa-dollar-sign fa-2x text-danger"></i>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Section Commandes -->
+                        <section id="orders" class="content-section mb-5">
+                            <h2>Commandes</h2>
+                            <table class="table table-bordered mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>ID Commande</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>12345</td>
+                                        <td>30/07/2024</td>
+                                        <td>Livrée</td>
+                                        <td>10000.00</td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                                Voir</button>
+                                            <button class="btn btn-primary btn-sm"><i class="fas fa-print"></i>
+                                                Imprimer</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Ajoutez plus de commandes ici -->
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <!-- Section Vendeurs Suivis -->
+                        <section id="Fournisseurs" class="content-section mt-5">
+                            <h2 class="mb-4">Mes Fournisseurs</h2>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Exemple de données de Fournisseur -->
+                                        <tr>
+                                            <td>Dz.pharm</td>
+                                            <td>Dz.pharm@email.com</td>
+                                            <td>012345678</td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                                    Voir</button>
+                                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                                    suspendre/reprendre</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pharma sante</td>
+                                            <td>Pharma sante@email.com</td>
+                                            <td>087654321</td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                                    Voir</button>
+                                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                                                    suspendre/reprendre</button>
+                                            </td>
+                                        </tr>
+                                        <!-- Ajouter d'autres Fournisseurs ici -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <!-- Messages Section -->
+                        <div class="row mt-4" id="messages">
+                            <div class="col-md-12">
+                                <h3>Messages</h3>
+                                <ul class="nav nav-tabs" id="messageTabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="received-tab" data-toggle="tab" href="#received"
+                                            role="tab" aria-controls="received" aria-selected="true">Reçus</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="sent-tab" data-toggle="tab" href="#sent" role="tab"
+                                            aria-controls="sent" aria-selected="false">Envoyés</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="compose-tab" data-toggle="tab" href="#compose"
+                                            role="tab" aria-controls="compose" aria-selected="false">Composer</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="messageTabsContent">
+                                    <div class="tab-pane fade show active" id="received" role="tabpanel"
+                                        aria-labelledby="received-tab">
+                                        <div id="receivedMessages" class="list-group mt-3">
+                                            <!-- Messages reçus seront affichés ici -->
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+                                        <div id="sentMessages" class="list-group mt-3">
+                                            <!-- Messages envoyés seront affichés ici -->
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="compose" role="tabpanel"
+                                        aria-labelledby="compose-tab">
+                                        <form id="composeMessageForm" class="mt-3">
+                                            <div class="form-group">
+                                                <label for="recipient">Destinataire</label>
+                                                <input type="text" class="form-control" id="recipient"
+                                                    placeholder="Entrez l'email du destinataire">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Sujet</label>
+                                                <input type="text" class="form-control" id="subject"
+                                                    placeholder="Entrez le sujet">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                <textarea class="form-control" id="message" rows="5"
+                                                    placeholder="Entrez votre message"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Section -->
+                        <section id="settings" class="content-section mt-5">
+                            <h2 class="mb-4">Paramètres</h2>
+                            <form>
+                                <!-- Personal Information -->
+                                <h5>Informations Personnelles</h5>
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputFirstName">Prénom</label>
+                                            <input type="text" class="form-control" id="inputFirstName"
+                                                placeholder="Prénom">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputLastName">Nom</label>
+                                            <input type="text" class="form-control" id="inputLastName"
+                                                placeholder="Nom">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPhoneNumber">Numéro de Téléphone</label>
+                                            <input type="tel" class="form-control" id="inputPhoneNumber"
+                                                placeholder="Numéro de Téléphone">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Adresse</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="Adresse">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputWilaya">Wilaya</label>
+                                        <select class="form-control" id="inputWilaya">
+                                            <option selected disabled>Sélectionnez une wilaya</option>
+                                            <!-- Ajouter les options pour les 58 wilayas d'Algérie -->
+                                            <option value="adrar">Adrar</option>
+                                            <option value="chlef">Chlef</option>
+                                            <option value="Laghouat">Laghouat</option>
+                                            <option value="Oum El Bouaghi">Oum El Bouaghi</option>
+                                            <option value="Batna">Batna</option>
+                                            <option value="Béjaïa">Béjaïa</option>
+                                            <option value="Biskra">Biskra</option>
+                                            <option value="Béchar">Béchar</option>
+                                            <option value="Blida">Blida</option>
+                                            <option value="Bouira">Bouira</option>
+                                            <option value="Tamanrasset">Tamanrasset</option>
+                                            <option value="Tébessa">Tébessa</option>
+                                            <option value="Tlemcen">Tlemcen</option>
+                                            <option value="Tiaret">Tiaret</option>
+                                            <option value="Tizi Ouzou">Tizi Ouzou</option>
+                                            <option value="Alger">Alger</option>
+                                            <option value="Djelfa">Djelfa</option>
+                                            <option value="Jijel">Jijel</option>
+                                            <option value="Sétif">Sétif</option>
+                                            <option value="Saida">Saïda</option>
+                                            <option value="Skikda">Skikda</option>
+                                            <option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+                                            <option value="Annaba">Annaba</option>
+                                            <option value="Guelma">Guelma</option>
+                                            <option value="Constantine">Constantine</option>
+                                            <option value="Médéa">Médéa</option>
+                                            <option value="Mostaganem">Mostaganem</option>
+                                            <option value="M'Sila">M'Sila</option>
+                                            <option value="Mascara">Mascara</option>
+                                            <option value="Ouargla">Ouargla</option>
+                                            <option value="Oran">Oran</option>
+                                            <option value="El Bayadh">El Bayadh</option>
+                                            <option value="Illizi">Illizi</option>
+                                            <option value="Bordj Bou Arréridj">Bordj Bou Arréridj</option>
+                                            <option value="Boumerdès">Boumerdès</option>
+                                            <option value="El Tarf">El Tarf</option>
+                                            <option value="Tindouf">Tindouf</option>
+                                            <option value="Tissemsilt">Tissemsilt</option>
+                                            <option value="El Oued">El Oued</option>
+                                            <option value="Khenchela">Khenchela</option>
+                                            <option value="Souk Ahras">Souk Ahras</option>
+                                            <option value="Tipaza">Tipaza</option>
+                                            <option value="Mila">Mila</option>
+                                            <option value="Aïn Defla">Aïn Defla</option>
+                                            <option value="Naâma">Naâma</option>
+                                            <option value="Aïn Témouchent">Aïn Témouchent</option>
+                                            <option value="Ghardaïa">Ghardaïa</option>
+                                            <option value="Relizane">Relizane</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Company Information -->
+                                    <h5>Informations sur la Société</h5>
+                                    <div class="form-group">
+                                        <label for="inputLogo">Logo de la Société</label><br>
+                                        <input type="file" id="inputLogo" accept="image/*">
+                                        <small class="form-text text-muted">Formats supportés : JPG, PNG. Taille
+                                            maximale : 2MB.</small>
+                                        <img src="#" id="previewLogo" class="mt-2 logo-image d-none"
+                                            alt="Aperçu du Logo">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCompanyName">Nom de la Société</label>
+                                            <input type="text" class="form-control" id="inputCompanyName"
+                                                placeholder="Nom de la Société">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCompanyPhoneNumber">Téléphone de la Société</label>
+                                            <input type="tel" class="form-control" id="inputCompanyPhoneNumber"
+                                                placeholder="Numéro de Téléphone de la Société">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCompanyEmail">Email de la Société</label>
+                                            <input type="email" class="form-control" id="inputCompanyEmail"
+                                                placeholder="Email de la Société">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCompanyAddress">Adresse de la Société</label>
+                                            <input type="text" class="form-control" id="inputCompanyAddress"
+                                                placeholder="Adresse de la Société">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputWilaya">Wilaya</label>
+                                        <select class="form-control" id="inputWilaya">
+                                            <option selected disabled>Sélectionnez une wilaya</option>
+                                            <!-- Ajouter les options pour les 58 wilayas d'Algérie -->
+                                            <option value="adrar">Adrar</option>
+                                            <option value="chlef">Chlef</option>
+                                            <option value="Laghouat">Laghouat</option>
+                                            <option value="Oum El Bouaghi">Oum El Bouaghi</option>
+                                            <option value="Batna">Batna</option>
+                                            <option value="Béjaïa">Béjaïa</option>
+                                            <option value="Biskra">Biskra</option>
+                                            <option value="Béchar">Béchar</option>
+                                            <option value="Blida">Blida</option>
+                                            <option value="Bouira">Bouira</option>
+                                            <option value="Tamanrasset">Tamanrasset</option>
+                                            <option value="Tébessa">Tébessa</option>
+                                            <option value="Tlemcen">Tlemcen</option>
+                                            <option value="Tiaret">Tiaret</option>
+                                            <option value="Tizi Ouzou">Tizi Ouzou</option>
+                                            <option value="Alger">Alger</option>
+                                            <option value="Djelfa">Djelfa</option>
+                                            <option value="Jijel">Jijel</option>
+                                            <option value="Sétif">Sétif</option>
+                                            <option value="Saida">Saïda</option>
+                                            <option value="Skikda">Skikda</option>
+                                            <option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+                                            <option value="Annaba">Annaba</option>
+                                            <option value="Guelma">Guelma</option>
+                                            <option value="Constantine">Constantine</option>
+                                            <option value="Médéa">Médéa</option>
+                                            <option value="Mostaganem">Mostaganem</option>
+                                            <option value="M'Sila">M'Sila</option>
+                                            <option value="Mascara">Mascara</option>
+                                            <option value="Ouargla">Ouargla</option>
+                                            <option value="Oran">Oran</option>
+                                            <option value="El Bayadh">El Bayadh</option>
+                                            <option value="Illizi">Illizi</option>
+                                            <option value="Bordj Bou Arréridj">Bordj Bou Arréridj</option>
+                                            <option value="Boumerdès">Boumerdès</option>
+                                            <option value="El Tarf">El Tarf</option>
+                                            <option value="Tindouf">Tindouf</option>
+                                            <option value="Tissemsilt">Tissemsilt</option>
+                                            <option value="El Oued">El Oued</option>
+                                            <option value="Khenchela">Khenchela</option>
+                                            <option value="Souk Ahras">Souk Ahras</option>
+                                            <option value="Tipaza">Tipaza</option>
+                                            <option value="Mila">Mila</option>
+                                            <option value="Aïn Defla">Aïn Defla</option>
+                                            <option value="Naâma">Naâma</option>
+                                            <option value="Aïn Témouchent">Aïn Témouchent</option>
+                                            <option value="Ghardaïa">Ghardaïa</option>
+                                            <option value="Relizane">Relizane</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputNIF">NIF (Numéro d'Identification Fiscale)</label>
+                                            <input type="text" class="form-control" id="inputNIF" placeholder="NIF">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputRegistre">Numéro de Registre de Commerce</label>
+                                            <input type="text" class="form-control" id="inputRegistre"
+                                                placeholder="Numéro de Registre de Commerce">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputRegistrePhoto">Photo du Registre de
+                                            Commerce</label><br>
+                                        <input type="file" id="inputRegistrePhoto" accept="image/*">
+                                        <small class="form-text text-muted">Formats supportés : JPG, PNG. Taille
+                                            maximale : 2MB.</small>
+                                        <img src="#" id="previewRegistrePhoto" class="mt-2 d-none"
+                                            alt="Aperçu du Registre de Commerce">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                        </section>
+                        </main>
+                    </div>
+            </div>
+
+
+            <!-- Inclure jQuery (requis pour Bootstrap JS) -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <!-- Inclure Bootstrap JS -->
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+            <!-- Inclure votre JS personnalisé -->
+            <script src="script.js"></script>
+            <script>
+                // Function to update card values
+                function updateCard(elementId, newValue) {
+                    document.getElementById(elementId).innerText = newValue;
+                }
+            </script>
+</body>
+
+</html>

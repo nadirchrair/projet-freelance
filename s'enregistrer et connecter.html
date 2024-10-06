@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'enregistrer / Se connecter</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 80px;
+            /* Adjusted for header height */
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00796b;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: calc(100% - 22px);
+            /* Adjust for padding */
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #00796b;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #004d40;
+        }
+
+        .form-group .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-group .link a {
+            color: #00796b;
+            text-decoration: none;
+        }
+
+        .form-group .link a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-button {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-button button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #004d40;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button button.active {
+            background-color: #00796b;
+        }
+
+        .form-group.checkbox {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            /* Adjusted margin for checkbox */
+        }
+
+        .form-group.checkbox input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="brand">ELSAIDALIYA</div>
+        <div class="navbar">
+            <a href="ACCEUIL.html">Accueil</a>
+            <a href="A propos.html">À propos</a>
+            <a href="liste de magasins.html">Fournisseurs</a>
+            <a href="contact.html">Contact</a>
+            <a href="s'enregistrer et connecter.html">Se connecter</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="toggle-button">
+            <button id="register-btn" class="active">S'enregistrer</button>
+            <button id="login-btn">Se connecter</button>
+        </div>
+        <div id="register-form">
+            <h2>S'enregistrer</h2>
+            <form action="register.php" method="post">
+                <div class="form-group">
+                    <label for="reg-username">Nom d'utilisateur:</label>
+                    <input type="text" id="reg-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Mot de passe:</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-type">Vous êtes:</label>
+                    <select id="user-type" name="user_type" required>
+                        <option value="pharmacist">Pharmacien(ne)</option>
+                        <option value="supplier">Fournisseur</option>
+                    </select>
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="privacy-policy" name="privacy_policy" required>
+                    <label for="privacy-policy">J'accepte la politique de confidentialité</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit">S'enregistrer</button>
+                </div>
+                <div class="form-group link">
+                    <p>Déjà un compte? <a href="#" id="switch-to-login">Se connecter</a></p>
+                </div>
+            </form>
+        </div>
+        <div id="login-form" style="display: none;">
+            <h2>Se connecter</h2>
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label for="log-username">Nom d'utilisateur:</label>
+                    <input type="text" id="log-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="log-password">Mot de passe:</label>
+                    <input type="password" id="log-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <a href="forgot-password.html">Mot de passe oublié?</a>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Se connecter</button>
+                </div>
+                <div class="form-group link">
+                    <p>Pas de compte? <a href="#" id="switch-to-register">S'enregistrer</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const registerBtn = document.getElementById('register-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const registerForm = document.getElementById('register-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToRegister = document.getElementById('switch-to-register');
+
+        registerBtn.addEventListener('click', () => {
+            registerBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        });
+
+        loginBtn.addEventListener('click', () => {
+            loginBtn.classList.add('active');
+            registerBtn.classList.remove('active');
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginBtn.click();
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerBtn.click();
+        });
+    </script>
+</body>
+
+</html>

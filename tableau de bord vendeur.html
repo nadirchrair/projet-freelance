@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<style>
+    /* style.css */
+
+    /* Global Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .container-fluid {
+        margin-top: 10px;
+    }
+
+    .sidebar {
+        background-color: #f8f9fa;
+        /* Custom background color */
+        width: 300px;
+        /* Adjust the width as needed */
+        min-height: 100vh;
+        /* Full height */
+    }
+
+    .sidebar-header h3 {
+        font-size: 1, 5rem;
+        /* Adjust the font size */
+        color: #007bff;
+        /* Custom text color */
+    }
+
+    .sidebar-header p {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    .nav-link {
+        padding: 15px;
+        color: #333;
+        font-size: 1.1rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background-color: #34c3b9;
+        color: #fff;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 10px;
+        background-color: #f4f6f8;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .header {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .profile-container {
+        margin-left: auto;
+    }
+
+    .profile img {
+        border: 2px solid #34c3b9;
+    }
+
+    .content-section h2 {
+        color: #34c3b9;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border-radius: 8px;
+        border: none;
+        background-color: #e8f9f8;
+        margin-top: 40%;
+    }
+
+
+    .card .card-title {
+        color: #34c3b9;
+        margin-bottom: 10px;
+    }
+
+    .card .card-text {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table th,
+    .table td {
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #34c3b9;
+        color: #fff;
+    }
+
+    .btn {
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #34c3b9;
+        border-color: #34c3b9;
+    }
+
+    .btn-primary:hover {
+        background-color: #2ca3a0;
+        border-color: #2ca3a0;
+    }
+
+    .modal-content {
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #eee;
+    }
+
+    .modal-title {
+        color: #34c3b9;
+    }
+</style>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar bg-light">
+            <div class="sidebar-header p-4 text-center">
+                <h3 class="text-primary">Tableau de bord</h3>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#overview"><i
+                            class="fas fa-tachometer-alt"></i> Aperçu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#products"><i class="fas fa-box"></i> Produit </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#produitcota"><i class="fas fa-shopping-cart"></i> produit Cota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#offers"><i class="fas fa-users"></i> Offers</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#settings"><i class="fas fa-cog"></i> Deconnecté</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content p-4">
+            <header>
+                <div class="container mt-4">
+                    <header class="d-flex justify-content-between align-items-center pb-3">
+                        <div class="profile-container d-flex align-items-center">
+                            <div class="profile d-flex align-items-center">
+                                <span class="me-2">Bienvenue,vendeur </span>
+                                <img src="ca7dd4a0379c-pharmacien-distributeur-en-gros.jpg.jpeg" alt="Profile Image"
+                                    class="rounded-circle" width="40" height="40">
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Overview Section -->
+                    <section id="overview" class="content-section">
+                        <div class="row g-4">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card text-center shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Produits Totaux</h5>
+                                        <p class="card-text display-6">350</p>
+                                        <i class="fas fa-box fa-2x text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card text-center shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Commandes Totales</h5>
+                                        <p class="card-text display-6">120</p>
+                                        <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card text-center shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Clients</h5>
+                                        <p class="card-text display-6">75</p>
+                                        <i class="fas fa-users fa-2x text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card text-center shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ventes Totales</h5>
+                                        <p class="card-text display-6">300000 </p>
+                                        <i class="fas fa-dollar-sign fa-2x text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Products Section -->
+                    <section id="products" class="content-section mt-5">
+                        <h2 class="mb-4">Produits </h2>
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                            <i class="fas fa-plus"></i> Ajouter un Produit
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Dci</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Exemple de données de produit -->
+                                    <tr>
+                                        <td>Doliprane</td>
+                                        <td>Paracetamol</td>
+                                        <td>120</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>lomac</td>
+                                        <td>Omeprazole</td>
+                                        <td>80</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Ajouter d'autres produits ici -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="produitcota" class="content-section mt-5">
+                        <h2 class="mb-4">Produits Cotas</h2>
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                            <i class="fas fa-plus"></i> Ajouter un Produits Cotas
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Dci</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Exemple de données de produit -->
+                                    <tr>
+                                        <td>Doliprane</td>
+                                        <td>Paracetamol</td>
+                                        <td>120</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>lomac</td>
+                                        <td>Omeprazole</td>
+                                        <td>80</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Ajouter d'autres produits ici -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+
+                    <section id="offers" class="content-section mt-5">
+                        <h2 class="mb-4">Offer</h2>
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                            <i class="fas fa-plus"></i> Ajouter un Offer
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Dci</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Exemple de données de produit -->
+                                    <tr>
+                                        <td>Doliprane</td>
+                                        <td>Paracetamol</td>
+                                        <td>120</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>lomac</td>
+                                        <td>Omeprazole</td>
+                                        <td>80</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm me-1"><i class="fas fa-edit"></i>
+                                                Modifier</button>
+                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                                                Supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Ajouter d'autres produits ici -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    </main>
+                </div>
+        </div>
+
+        <!-- Add Product Modal -->
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addProductModalLabel">Ajouter un Produit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-body">
+                            <h2>Formulaire d'Ajout de Produit</h2>
+                            <form id="productForm" action="/submit" method="post">
+                                <div class="form-group">
+                                    <label for="nom_commercial">Nom Commercial :</label>
+                                    <input type="text" class="form-control" id="nom_commercial" name="nom_commercial"
+                                        required>
+                                    <div class="error" id="nom_commercial_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dci">DCI :</label>
+                                    <input type="text" class="form-control" id="dci" name="dci" required>
+                                    <div class="error" id="dci_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="forme">Forme :</label>
+                                    <select class="form-control" id="forme" name="forme" required>
+                                        <option value="">Sélectionnez une forme</option>
+                                        <option value="Comprimé">Comprimé</option>
+                                        <option value="Capsule">Capsule</option>
+                                        <option value="Sirop">Sirop</option>
+                                        <option value="Gélule">Gélule</option>
+                                        <option value="Crème">Crème</option>
+                                        <option value="Pommade">Pommade</option>
+                                        <option value="Gel">Gel</option>
+                                        <option value="Gouttes auriculaires">Gouttes auriculaires</option>
+                                        <option value="Gouttes">Gouttes</option>
+                                        <option value="Solution buvable">Solution buvable</option>
+                                        <option value="Solution injectable">Solution injectable</option>
+                                        <option value="Solution buvable/injectable">Solution buvable/injectable</option>
+                                        <option value="Spray">Spray</option>
+                                        <option value="Injection">Injection</option>
+                                        <option value="Suppositoire">Suppositoire</option>
+                                        <option value="Collyre">Collyre</option>
+                                        <option value="Patch">Patch</option>
+                                        <option value="Granulés">Granulés</option>
+                                        <option value="Ovule">Ovule</option>
+                                        <option value="Pâte">Pâte</option>
+                                        <option value="Poudre">Poudre</option>
+                                        <option value="Pastille">Pastille</option>
+                                        <option value="Solution pour inhalation">Solution pour inhalation</option>
+                                        <option value="Suspension">Suspension</option>
+                                        <option value="Emplâtre">Emplâtre</option>
+                                        <option value="Aérosol">Aérosol</option>
+                                        <option value="Élixir">Élixir</option>
+                                        <option value="Lotion">Lotion</option>
+                                        <option value="Implant">Implant</option>
+                                        <option value="Dispositif intra-utérin">Dispositif intra-utérin</option>
+                                        <!-- Ajoutez d'autres options au besoin -->
+                                    </select>
+                                    <div class="error" id="forme_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dosage">Dosage :</label>
+                                    <input type="text" class="form-control" id="dosage" name="dosage" required>
+                                    <div class="error" id="dosage_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Ug">Ug :</label>
+                                    <input type="text" class="form-control" id="Ug" name="Ug" required>
+                                    <div class="error" id="Ug_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="conditionnement">Conditionnement :</label>
+                                    <input type="text" class="form-control" id="conditionnement" name="Conditionnement"
+                                        required>
+                                    <!-- Options de 1 à 100 -->
+                                    </select>
+                                    <div class="error " id="conditionnement_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="numero_lot ">Numéro de Lot :</label>
+                                    <input type="text " class="form-control " id="numero_lot " name="numero_lot "
+                                        required>
+                                    <div class="error " id="numero_lot_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="date_peremption ">Date de Péremption :</label>
+                                    <input type="date " class="form-control " id="date_peremption "
+                                        name="date_peremption " required>
+                                    <div class="error " id="date_peremption_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="prix_achat ">Prix d'Achat :</label>
+                                    <input type="text " class="form-control " id="prix_achat " name="prix_achat "
+                                        required>
+                                    <div class="error " id="prix_achat_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="prix_vente ">Prix de Vente :</label>
+                                    <input type="text " class="form-control " id="prix_vente " name="prix_vente "
+                                        required>
+                                    <div class="error " id="prix_vente_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="colisage ">Colisage :</label>
+                                    <input type="text " class="form-control " id="colisage " name="colisage " required>
+                                    <div class="error " id="colisage_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="nom_laboratoire ">Nom du Laboratoire :</label>
+                                    <input type="text " class="form-control " id="nom_laboratoire "
+                                        name="nom_laboratoire " required>
+                                    <div class="error " id="nom_laboratoire_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="quantite_stock ">Quantité en Stock :</label>
+                                    <input type="number " class="form-control " id="quantite_stock "
+                                        name="quantite_stock " required>
+                                    <div class="error " id="quantite_stock_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="quantite_max_client ">Quantité Maximum par Client :</label>
+                                    <input type="number " class="form-control " id="quantite_max_client "
+                                        name="quantite_max_client " required>
+                                    <div class="error " id="quantite_max_client_error "></div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="image ">Image du Produit :</label>
+                                    <input type="file " class="form-control-file " id="image " name="image "
+                                        accept="image/* " onchange="previewImage(event) ">
+                                    <div class="error " id="image_error "></div>
+                                    <img id="imagePreview " src="# " alt="Aperçu de l 'image"
+                                        style="display:none; max-width: 100%; margin-top: 1rem;">
+                                </div>
+                                <button type="submit" class="btn btn-success">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="scripts.js"></script>
+        <script>
+
+            // Exemple de données de commande (à remplacer par vos données réelles)
+            const orderData = {
+                id: '12345',
+                date: '2024-07-30',
+                client: {
+                    name: 'Marie Curie',
+                    email: 'marie.curie@example.com',
+                    phone: '0123456789',
+                    address: '123 Rue de la Science, 75001 Paris, France'
+                },
+                seller: {
+                    name: 'Jean Dupont',
+                    email: 'jean.dupont@example.com',
+                    phone: '0987654321',
+                    address: '456 Avenue des Ventes, 75002 Paris, France'
+                },
+                items: [
+                    { produit: 'Produit A', quantite: 2, prix: 15.00 },
+                    { produit: 'Produit B', quantite: 1, prix: 25.00 },
+                    { produit: 'Produit C', quantite: 3, prix: 10.00 },
+                ]
+            };
+
+            function generateOrderDetails(data) {
+                document.getElementById('orderId').textContent = data.id;
+
+                // Remplir les coordonnées du client
+                document.getElementById('clientName').textContent = data.client.name;
+                document.getElementById('clientEmail').textContent = data.client.email;
+                document.getElementById('clientPhone').textContent = data.client.phone;
+                document.getElementById('clientAddress').textContent = data.client.address;
+
+                // Remplir les coordonnées du vendeur
+                document.getElementById('sellerName').textContent = data.seller.name;
+                document.getElementById('sellerEmail').textContent = data.seller.email;
+                document.getElementById('sellerPhone').textContent = data.seller.phone;
+                document.getElementById('sellerAddress').textContent = data.seller.address;
+
+                const orderItems = document.getElementById('orderItems');
+                orderItems.innerHTML = '';
+
+                let total = 0;
+
+                data.items.forEach(item => {
+                    const itemTotal = item.quantite * item.prix;
+                    total += itemTotal;
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${item.produit}</td>
+                    <td>${item.quantite}</td>
+                    <td>€${item.prix.toFixed(2)}</td>
+                    <td>€${itemTotal.toFixed(2)}</td>
+                `;
+
+                    orderItems.appendChild(row);
+                });
+
+                document.getElementById('orderTotal').textContent = total.toFixed(2);
+            }
+
+            function showOrderDetails(orderId) {
+                // Ici, vous pouvez récupérer les données de la commande par ID
+                // Pour l'exemple, nous utilisons des données statiques
+                generateOrderDetails(orderData);
+                document.getElementById('orderDetails').style.display = 'block';
+            }
+
+            // Fonction pour imprimer la commande
+            function printOrder() {
+                window.print();
+            }
+            // script.js
+            document.addEventListener('DOMContentLoaded', function () {
+                const sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
+                const contentSections = document.querySelectorAll('.content-section');
+
+                // Function to show the selected section and hide others
+                function showSection(targetId) {
+                    contentSections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Add click event listener to each sidebar link
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('data-target');
+                        showSection(targetId);
+
+                        // Optional: Update active class on sidebar
+                        sidebarLinks.forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                // Initial setup: Show the first section by default
+                if (contentSections.length > 0) {
+                    showSection(contentSections[0].id);
+                }
+            });
+
+            // Function to update card values
+            function updateCard(elementId, newValue) {
+                document.getElementById(elementId).innerText = newValue;
+            }
+        </script>
+
+</body>
+
+</html>

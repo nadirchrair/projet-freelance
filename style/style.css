@@ -1,0 +1,301 @@
+        /* Styles CSS pour la mise en page de base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 7%;
+            padding: 10px 20px;
+            z-index: 10;
+            position: sticky;
+            background-color: #00796b;
+        }
+
+        .brand {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin-right: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            /* Aligns*/
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: #fff;
+            /* Couleur blanche pour contraster avec l'image de fond */
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            /* Ombre portée pour une meilleure lisibilité */
+        }
+
+
+
+        .hero {
+            background-image: url('../pha.jpg');
+            /* Assurez-vous que l'image 'pha.jpg' est dans le bon répertoire */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 530px;
+            /* Hauteur réduite de l'image */
+            display: flex;
+            justify-content: center;
+            /* Centrer horizontalement */
+            align-items: center;
+            /* Aligner le contenu au centre */
+            text-align: center;
+            color: #fff;
+            flex-direction: column;
+            position: relative;
+            /* Pour contenir la navbar */
+            padding: 20px;
+        }
+
+        .hero h1,
+        .hero p,
+        .hero a {
+            color: #fff;
+            /* Texte blanc pour contraster avec l'image de fond */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Ombre portée pour une meilleure lisibilité */
+            margin: 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .hero a {
+            background-color: #00796b;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .hero a:hover {
+            background-color: #005f56;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .feature {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            /* Effet de lévitation au survol */
+        }
+
+        .feature h2 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .why-choose {
+            background-color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .role {
+            text-decoration: none;
+            cursor: pointer;
+            color: #00796b;
+            border: 1px solid #00796b;
+            padding: 12px 12px;
+            border-radius: 4px;
+        }
+
+        .role:hover {
+            background-color: #00796b;
+
+            color: #fff;
+
+        }
+
+        .why-choose p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #00796b;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Styles pour les images */
+        .feature img {
+            width: 100%;
+            /* Ajustement de la largeur de l'image */
+            max-width: 300px;
+            /* Définir une largeur maximale pour l'image */
+            height: auto;
+            /* Hauteur automatique pour conserver les proportions */
+            border-radius: 50%;
+            /* Coins arrondis pour les images rondes */
+            margin-bottom: 10px;
+            /* Espacement en bas de l'image */
+        }
+
+
+        /* aprops*/
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            /* White background for sections */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h1,
+        section h2 {
+            color: #00796B;
+            /* Dark green for section headings */
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #00796B;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta a:hover {
+            background-color: #00695C;
+            /* Darker shade of green on hover */
+        }
+
+        /****** fourniseuuur*******/
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-form {
+            margin-bottom: 20px;
+        }
+
+        .filter-form input,
+        .filter-form select {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #00796b;
+            width: calc(100% - 22px);
+            /* Adjust for padding */
+            margin-bottom: 10px;
+        }
+
+        .store-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .store-list li {
+            background-color: #e0f2f1;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #00796b;
+        }
+
+        .join-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #00796b;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #004d40;
+        }

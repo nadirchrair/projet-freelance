@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisez Votre Force de Vente" - FAQ | Elsaïdaliya</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles specific to this page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b7eae5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 7%;
+            padding: 10px 20px;
+            z-index: 10;
+            position: sticky;
+            background-color: #00796b;
+        }
+
+        .brand {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin-right: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            /* Aligns*/
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: #fff;
+            /* Couleur blanche pour contraster avec l'image de fond */
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            /* Ombre portée pour une meilleure lisibilité */
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00796B;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta a:hover {
+            background-color: #00695C;
+        }
+
+        .advantages-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .advantages {
+            display: flex;
+            flex-direction: column;
+            width: 65%;
+        }
+
+        .advantage {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f1f1f1;
+            border-left: 5px solid #00796B;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            counter-increment: advantage-counter;
+            display: flex;
+            align-items: center;
+        }
+
+        .advantage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .advantage::before {
+            content: "\21AA";
+            /* Unicode for curved right arrow */
+            display: inline-block;
+            margin-right: 10px;
+            background-color: #00796B;
+            color: #fff;
+            border-radius: 3px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            position: absolute;
+            left: -35px;
+            top: 15px;
+        }
+
+        .image-container {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: 60%;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion {
+            background-color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            font-size: 1.5em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion:hover {
+            background-color: #f1f1f1;
+        }
+
+        .accordion.active,
+        .accordion:hover {
+            background-color: #00796B;
+            color: white;
+        }
+
+        .panel {
+            padding: 0 15px;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            background-color: #e0f2f1;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .faq-column {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="brand">ELSAIDALIYA</div>
+        <div class="navbar">
+            <a href="ACCEUIL.html">Accueil</a>
+            <a href="A propos.html">À propos</a>
+            <a href="liste de magasins.html">Fournisseurs</a>
+            <a href="contact.html">Contact</a>
+            <a href="s'enregistrer et connecter.html">Se connecter</a>
+        </div>
+    </div>
+
+    <section id="avantages" class="container">
+        <h2>Optimisez Votre Force de Vente</h2>
+        <div class="advantages-container">
+            <ul class="advantages">
+                <li class="advantage"><strong>Gain de temps</strong>Les pharmaciens peuvent passer des commandes
+                    rapidement et à tout moment, sans avoir à appeler ou à envoyer des fax aux grossistes.</li>
+                <li class="advantage"><strong>Comparaison des offres</strong>La plateforme permet aux pharmaciens de
+                    comparer facilement les prix et les disponibilités des produits entre différents grossistes,
+                    optimisant ainsi leurs coûts d’achat. </li>
+                <li class="advantage"><strong>Accès à une large gamme de produits</strong> Les pharmaciens peuvent avoir
+                    accès à un catalogue plus large de médicaments et de produits de santé, améliorant leur capacité à
+                    répondre aux besoins des patients.</li>
+                <li class="advantage"><strong>Historique des commandes</strong>Les commandes passées sont archivées sur
+                    la plateforme, facilitant le suivi des achats et la gestion des stocks.</li>
+                <li class="advantage"><strong>Promotions et offres spéciales</strong>Les pharmaciens peuvent bénéficier
+                    de promotions spéciales et d'offres attractives disponibles sur la plateforme. </li>
+                <li class="advantage"><strong>Transparence et traçabilité</strong> Une plateforme en ligne assure une
+                    traçabilité complète des transactions, augmentant la transparence et la sécurité des échan</li>
+                <li class="advantage"><strong>Conformité réglementaire</strong>La plateforme intègre des fonctionnalités
+                    pour garantir que les transactions respectent les régulations en vigueur, simplifiant ainsi la
+                    conformité pour les deux parties. </li>
+                <li class="advantage"><strong>Réduction des erreurs</strong>L’automatisation des processus réduit les
+                    erreurs de saisie et de communication, assurant des commandes plus précises et une meilleure
+                    satisfaction client. </li>
+            </ul>
+            <div class="image-container">
+                <img src="./pharm.jpg" alt="Avantages de notre plateforme">
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container">
+        <h2>FAQ - Foire Aux Questions</h2>
+        <div class="faq-container">
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je m'inscrire en tant que pharmacien ?</button>
+                <div class="panel show">
+                    <p>Pour vous inscrire, cliquez sur “Inscription” et sélectionnez “Pharmacien”. Remplissez le
+                        formulaire avec vos informations professionnelles et personnelles. Une fois votre compte
+                        vérifié, vous pourrez commencer à utiliser la plateforme. </p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je passer une commande ?</button>
+                <div class="panel show">
+                    <p>Vous pouvez passer une commande en vous connectant à votre compte, en naviguant vers le catalogue
+                        des produits, en sélectionnant les articles que vous souhaitez acheter, puis en suivant les
+                        instructions pour finaliser la commande.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Quels modes de paiement sont acceptés ?</button>
+                <div class="panel show">
+                    <p> Le paiement sera effectué à la livraison de votre commande.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Comment puis-je suivre ma commande ?</button>
+                <div class="panel show">
+                    <p>Une fois votre commande passée, vous pourrez suivre son statut en vous connectant à votre compte
+                        et en accédant à la section "Suivi des commandes.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Puis-je modifier ou annuler ma commande ?</button>
+                <div class="Panel show">
+                    <p>Les modifications et les annulations sont possibles tant que votre commande n’a pas été expédiée.
+                        Veuillez contacter notre support client dès que possible pour effectuer ces changements. </p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Mes informations personnelles sont-elles sécurisées ?</button>
+                <div class="Panel show">
+                    <p> Oui, nous prenons la sécurité de vos informations personnelles très au sérieux. Nous utilisons
+                        des protocoles de sécurité avancés pour protéger vos données.</p>
+                </div>
+            </div>
+            <div class="faq-column">
+                <button class="accordion active">Partagez-vous mes informations avec des tiers ?</button>
+                <div class="Panel show">
+                    <p> Nous ne partageons vos informations avec des tiers que lorsque cela est nécessaire pour traiter
+                        votre commande (par exemple, avec les services de livraison) ou lorsque la loi l’exige. Pour
+                        plus de détails, consultez notre politique de confidentialité.</p>
+                </div>
+            </div>
