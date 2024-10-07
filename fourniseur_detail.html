@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fournisseur - Produits et Offres</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #34495e;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            text-align: justify;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Tabs Section */
+        .tabs {
+            display: flex;
+            justify-content: space-evenly;
+            border-bottom: 2px solid #ecf0f1;
+            margin-bottom: 30px;
+        }
+
+        .tabs button {
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #7f8c8d;
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tabs button:hover {
+            color: #2980b9;
+        }
+
+        .tabs button.active {
+            color: #2980b9;
+            border-bottom: 3px solid #2980b9;
+        }
+
+        /* Tab Content Styling */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tab-content h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        /* Product List */
+        .product-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-list ul li {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .product-list ul li:hover {
+            background-color: #bdc3c7;
+            transform: translateY(-3px);
+        }
+
+        /* Responsiveness */
+        @media screen and (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tabs button {
+                width: 100%;
+                text-align: center;
+                border-bottom: none;
+                padding: 10px;
+            }
+
+            .tabs button.active {
+                border-bottom: none;
+                border-left: 5px solid #2980b9;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Nom du Fournisseur</h1>
+        <p>
+            Ce fournisseur est reconnu pour la qualité exceptionnelle de ses produits. Avec des années d'expérience dans
+            l'industrie, il propose des solutions sur mesure adaptées aux besoins spécifiques des entreprises et des
+            particuliers.
+        </p>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tablink active" onclick="openTab(event, 'Products')">Produits</button>
+            <button class="tablink" onclick="openTab(event, 'Cotas')">Cotas de Produits</button>
+            <button class="tablink" onclick="openTab(event, 'Offers')">Offres</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="Products" class="tab-content active">
+            <h2>Liste des Produits</h2>
+            <p>Voici la liste des produits proposés par ce fournisseur.</p>
+            <div class="product-list">
+                <ul>
+                    <li>Produit 1</li>
+                    <li>Produit 2</li>
+                    <li>Produit 3</li>
+                    <li>Produit 4</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="Cotas" class="tab-content">
+            <h2>Cotas de Produits</h2>
+            <p>Ces cotas représentent les limites d'approvisionnement pour les produits proposés par ce fournisseur.</p>
+            <div class="product-list">
+                <ul>
+                    <li>Cota Produit 1</li>
+                    <li>Cota Produit 2</li>
+                    <li>Cota Produit 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="Offers" class="tab-content">
+            <h2>Offres Spéciales</h2>
+            <p>Découvrez les offres spéciales et promotions proposées par ce fournisseur.</p>
+            <div class="product-list">
+                <ul>
+                    <li>Offre 1: 20% de réduction sur Produit 1</li>
+                    <li>Offre 2: Livraison gratuite pour Produit 2</li>
+                    <li>Offre 3: Achat groupé pour Produit 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // Hide all tab content
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove('active');
+            }
+
+            // Remove "active" class from all buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab and add "active" class to the button
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.className += " active";
+        }
+
+        // Set the first tab to open by default
+        document.getElementById('Products').style.display = 'block';
+    </script>
+
+</body>
+
+</html>
