@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Magasins</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
@@ -13,8 +15,8 @@
     <div class="header">
         <div class="brand">ELSAIDALIYA</div>
         <div class="navbar">
-            <a href="ACCEUIL.html">Accueil</a>
-            <a href="A propos.html">À propos</a>
+            <a href="{% url 'home' %}">Accueil</a>
+            <a href="{% url 'Aprops' %}">À propos</a>
             <a href="liste de magasins.html">Fournisseurs</a>
             <a href="contact.html">Contact</a>
             <a href="s'enregistrer et connecter.html">Se connecter</a>
